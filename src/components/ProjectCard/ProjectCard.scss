@@ -1,0 +1,8 @@
+.qm-project-card {
+  text-decoration: none;
+  margin: 0 8px 12px;
+
+  &:hover > div {
+    transform: translateY(-3px);
+  }
+}

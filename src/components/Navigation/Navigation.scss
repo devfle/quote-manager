@@ -1,0 +1,46 @@
+.qm-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #23272e;
+  border-right: 1px solid #23272e;
+  height: 100%;
+  width: 280px;
+  padding: 24px 0;
+  box-sizing: border-box;
+  transform: translateX(-280px);
+  transition: 0.3s transform linear;
+  z-index: 10;
+
+  &--is-visible {
+    transform: translateX(0);
+  }
+
+  &__avatar {
+    margin: 0 auto;
+  }
+
+  &__list {
+    list-style: none;
+    margin-block-start: 32px;
+  }
+
+  &__list-item {
+    &:hover {
+      cursor: pointer;
+      background: #282c34;
+    }
+
+    > a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1em;
+      padding: 10px 24px;
+      display: block;
+    }
+
+    .active {
+      background: #23252a;
+    }
+  }
+}
