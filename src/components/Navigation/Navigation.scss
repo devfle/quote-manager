@@ -1,0 +1,14 @@
+.qm-navigation {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #333;
+  height: 100%;
+  width: 300px;
+  padding: 24px 0;
+  box-sizing: border-box;
+
+  &__avatar {
+    margin: 0 auto;
+  }
+}
