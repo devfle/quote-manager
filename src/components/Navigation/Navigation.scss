@@ -1,14 +1,36 @@
 .qm-navigation {
   position: fixed;
-  left: 0;
   top: 0;
-  background: #333;
+  left: 0;
+  background: #23272e;
+  border-right: 1px solid #23272e;
   height: 100%;
-  width: 300px;
+  width: 280px;
   padding: 24px 0;
   box-sizing: border-box;
+  transform: translateX(-280px);
+  transition: 0.3s transform linear;
+
+  @media screen and (min-width: 1024px) {
+    transform: translateX(0);
+  }
 
   &__avatar {
     margin: 0 auto;
+  }
+
+  &__list {
+    list-style: none;
+    margin-block-start: 32px;
+  }
+
+  &__list-item {
+    font-size: 16px;
+    padding: 10px 24px;
+
+    &:hover {
+      cursor: pointer;
+      background: #282c34;
+    }
   }
 }

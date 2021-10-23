@@ -4,13 +4,22 @@
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .quote-manager {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  color: #fff;
+
+  @media screen and (min-width: 1024px) {
+    width: calc(100% - 280px);
+    padding: 16px 32px;
+    margin-inline-start: auto;
+  }
 }
