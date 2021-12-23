@@ -8,7 +8,9 @@ function Navigation() {
   const navigationPointList: string[] = ["Dashboard", "Quotes", "Settings"];
   const navigationPoints = navigationPointList.map((navigationString) => (
     <li key={navigationString} className="qm-navigation__list-item">
-      <Link to={`/${navigationString}`}>{navigationString}</Link>
+      <Link className="qm-navigation__link" to={`/${navigationString}`}>
+        {navigationString}
+      </Link>
     </li>
   ));
   return (

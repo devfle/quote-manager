@@ -1,0 +1,7 @@
+.qm-project-card:not(.qm-project-card:first-child) {
+  margin-left: 16px;
+}
+
+.qm-project-card:hover {
+  transform: translateY(-3px);
+}

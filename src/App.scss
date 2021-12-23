@@ -8,9 +8,11 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background-color: #282c34;
+}
 
 .quote-manager {
-  background-color: #282c34;
   min-height: 100vh;
   width: 100%;
   padding: 16px;
@@ -22,4 +24,27 @@
     padding: 16px 32px;
     margin-inline-start: auto;
   }
+}
+
+.qm-card-wrapper {
+  margin-block-start: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .qm-card > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  > div {
+    margin: 0 8px;
+  }
+
+  .qm-card__input {
+    margin: 8px 0;
+  }
+}
+
+.qm-quotes {
+  margin-top: 32px;
 }
