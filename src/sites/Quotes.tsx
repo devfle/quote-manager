@@ -64,8 +64,8 @@ function Quotes() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={transferProjectData}>Create</Button>
           <Button onClick={resetProjectDataForm}>Cancel</Button>
+          <Button onClick={transferProjectData}>Create</Button>
         </DialogActions>
       </Dialog>
       <ProjectCard projects={projectData} />
