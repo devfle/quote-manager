@@ -1,10 +1,10 @@
-import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./App.scss";
 import Dashboard from "./sites/Dashboard";
 import Quotes from "./sites/Quotes";
 import Settings from "./sites/Settings";
+import SingleProject from "./sites/SingleProject";
 
 // custom components
 import Navigation from "./components/Navigation/Navigation";
@@ -23,15 +23,16 @@ function App() {
       <Router>
         <div className="quote-manager">
           <Navigation />
-          <Typography variant="h4" className="quote-manager-title">
-            Dashboard
-          </Typography>
+          <Typography variant="h4" className="quote-manager-title"></Typography>
           <Switch>
             <Route exact path="/Dashboard">
               <Dashboard title="Moin" />
             </Route>
             <Route path="/Quotes">
               <Quotes />
+            </Route>
+            <Route path="/Quote/:id">
+              <SingleProject />
             </Route>
             <Route path="*">
               <Settings />

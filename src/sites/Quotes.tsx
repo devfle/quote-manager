@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent, SpeedDial, SpeedDialIcon, Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText, TextField } from "@mui/material";
-import QuoteForm from "../components/QuoteForm/QuoteForm";
+import { SpeedDial, SpeedDialIcon, Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText, TextField } from "@mui/material";
 import ProjectCard from "../components/ProjectCard/ProjectCard";
+
 function Quotes() {
   const [showDialog, setShowDialog] = React.useState(false);
   const [projectFormData, setProjectFormData] = React.useState({ title: "", description: "" });
@@ -69,16 +69,6 @@ function Quotes() {
         </DialogActions>
       </Dialog>
       <ProjectCard projects={projectData} />
-      {false && (
-        <div className="qm-card-wrapper">
-          <QuoteForm />
-          <Card className="qm-card">
-            <CardContent>
-              <h2 className="qm-card__headline">Your Quotes</h2>
-            </CardContent>
-          </Card>
-        </div>
-      )}
     </div>
   );
 }
