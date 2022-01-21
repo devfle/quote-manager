@@ -1,39 +1,35 @@
 import React from "react";
 import { SpeedDial, SpeedDialIcon, Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText, TextField } from "@mui/material";
 import ProjectCard from "../components/ProjectCard/ProjectCard";
+import { SavedProjects, ProjectData } from "../App";
+import { v4 as uuidv4 } from "uuid";
 
 function Quotes() {
   const [showDialog, setShowDialog] = React.useState(false);
   const [projectFormData, setProjectFormData] = React.useState({ title: "", description: "" });
+  const { setProjectData } = React.useContext(SavedProjects);
 
-  // TODO: save data for first step in local storage until backend ist ready
-  const [projectData, setProjectData] = React.useState([{ id: 0, title: "Your Title", description: "lorem ipsum dolor sit amet" }]);
-
-  const toggleDialog = () => {
+  const toggleDialog = (): void => {
     setShowDialog((prevDialogState) => !prevDialogState);
   };
 
-  const resetProjectDataForm = () => {
+  const resetProjectDataForm = (): void => {
     setProjectFormData({ title: "", description: "" });
     toggleDialog();
   };
 
-  const transferProjectData = () => {
-    // TODO: replace the length if items can be deleted it is not unique anymore
-    createNewProject({ id: projectData.length, ...projectFormData });
-    resetProjectDataForm();
-  };
-
-  // TODO: make desciption as type optional
-  const createNewProject = (newProjectData: { id: number; title: string; description: string }) => {
-    newProjectData.title && setProjectData((prevProjectData) => [...prevProjectData, newProjectData]);
-  };
-
-  // TODO: replace any type
-  const handleInput = (_: any) => {
+  const handleInput = (_: React.ChangeEvent<HTMLInputElement>): void => {
     setProjectFormData((prevFormData) => {
       return { ...prevFormData, [_.target.name]: _.target.value };
     });
+  };
+
+  const updateProjectData = (): void => {
+    setProjectData((prevProjectData: null | Array<ProjectData>) => {
+      const generateNewData = { id: uuidv4(), quoteStyle: null, ...projectFormData };
+      return [...(prevProjectData ? prevProjectData : []), generateNewData];
+    });
+    resetProjectDataForm();
   };
 
   return (
@@ -65,10 +61,10 @@ function Quotes() {
         </DialogContent>
         <DialogActions>
           <Button onClick={resetProjectDataForm}>Cancel</Button>
-          <Button onClick={transferProjectData}>Create</Button>
+          <Button onClick={updateProjectData}>Create</Button>
         </DialogActions>
       </Dialog>
-      <ProjectCard projects={projectData} />
+      <ProjectCard />
     </div>
   );
 }

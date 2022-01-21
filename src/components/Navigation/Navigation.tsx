@@ -1,11 +1,12 @@
-import React from "react";
 import "./Navigation.scss";
 import { Link } from "react-router-dom";
 
 import Avatar from "@mui/material/Avatar";
 
 function Navigation() {
-  const navigationPointList: string[] = ["Dashboard", "Quotes", "Settings"];
+  // TODO: Props sollen navi punkte sein
+  // TODO: Mobile Navi
+  const navigationPointList: string[] = ["Dashboard", "Projects"];
   const navigationPoints = navigationPointList.map((navigationString) => (
     <li key={navigationString} className="qm-navigation__list-item">
       <Link className="qm-navigation__link" to={`/${navigationString}`}>

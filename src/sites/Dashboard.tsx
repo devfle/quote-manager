@@ -5,7 +5,11 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ title }) => {
-  return <h1>{title}</h1>;
+  return (
+    <div className="dashboard">
+      <span className="dashboard__date">22:15</span>
+    </div>
+  );
 };
 
 export default Dashboard;
