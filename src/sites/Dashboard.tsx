@@ -1,13 +1,11 @@
+import { Typography } from "@mui/material";
 import React from "react";
 
-interface DashboardProps {
-  title: string;
-}
-
-const Dashboard: React.FC<DashboardProps> = ({ title }) => {
+const Dashboard: React.FC = () => {
   return (
     <div className="dashboard">
-      <span className="dashboard__date">22:15</span>
+      <Typography className="dashboard__date">22:15</Typography>
+      <Typography className="dashboard__quote">"Lorem ipsum dolor sit amet"</Typography>
     </div>
   );
 };

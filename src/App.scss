@@ -13,7 +13,7 @@ body {
 }
 
 .quote-manager {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   padding: 16px;
   box-sizing: border-box;
@@ -52,4 +52,23 @@ body {
     flex-wrap: wrap;
     display: flex;
   }
+}
+
+//TODO: Move
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.dashboard__date {
+  font-size: clamp(11rem, 4vw, 4rem) !important;
+  margin-block-start: -100px;
+}
+
+.dashboard__quote {
+  font-size: clamp(2rem, 2vw, 1rem) !important;
 }

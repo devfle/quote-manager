@@ -73,7 +73,7 @@ function App() {
                 <SingleProject />
               </Route>
               <Route path="/">
-                <Dashboard title="Moin" />
+                <Dashboard />
               </Route>
             </Switch>
           </div>

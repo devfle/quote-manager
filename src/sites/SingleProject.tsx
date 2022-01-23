@@ -24,6 +24,7 @@ export default function SingleProject() {
   const [quoteStyle, setQuoteStyle] = React.useState<null | string | { quoteStyle: string }>(null);
   const [welcomePopup, setWelcomePopup] = React.useState<boolean>(true);
   const [singleProjectData, setSingleProjectData] = React.useState<null | ProjectData | any>(null);
+  const [deletePopup, setDeletePopup] = React.useState<boolean>(false);
   const { projectData, setProjectData } = React.useContext(SavedProjects);
 
   const { id } = useParams<{ id: string }>();
@@ -38,9 +39,7 @@ export default function SingleProject() {
 
   const persistQuoteStyle = (): void => {
     setSingleProjectData({ ...singleProjectData, quoteStyle });
-    //const dataIndex = findIndexById(id, projectData);
     const updatedProjectData = projectData.map((obj: any) => {
-      debugger;
       if (id === obj.id) {
         return {
           ...obj,
@@ -66,7 +65,7 @@ export default function SingleProject() {
 
   return (
     <div className="qm-single-project">
-      <SpeedDial />
+      <SpeedDial setDeletePopup={setDeletePopup} />
       <Dialog keepMounted aria-describedby="alert-dialog-slide-description" open={welcomePopup}>
         <DialogTitle>Welcome to your new Project: {singleProjectData && singleProjectData?.title}</DialogTitle>
         <DialogContent>
@@ -82,6 +81,16 @@ export default function SingleProject() {
         </DialogContent>
         <DialogActions>
           <Button onClick={persistQuoteStyle}>Start</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog keepMounted aria-describedby="alert-dialog-slide-description" open={deletePopup}>
+        <DialogTitle>Do you want to delete {singleProjectData && singleProjectData?.title}?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setDeletePopup(false)}>Cancel</Button>
+          <Button onClick={() => setDeletePopup(false)}>Delete</Button>
         </DialogActions>
       </Dialog>
       <div className="qm-card-wrapper">
