@@ -16,16 +16,17 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { SavedProjects, ProjectData } from "../App";
 import SpeedDial from "../components/SpeedDial/SpeedDial";
 
 export default function SingleProject() {
-  const [quoteStyle, setQuoteStyle] = React.useState<null | string | { quoteStyle: string }>(null);
+  const [quoteStyle, setQuoteStyle] = React.useState<string | { quoteStyle: string }>("apa");
   const [welcomePopup, setWelcomePopup] = React.useState<boolean>(true);
   const [singleProjectData, setSingleProjectData] = React.useState<null | ProjectData | any>(null);
   const [deletePopup, setDeletePopup] = React.useState<boolean>(false);
   const { projectData, setProjectData } = React.useContext(SavedProjects);
+  const history = useHistory();
 
   const { id } = useParams<{ id: string }>();
 
@@ -37,9 +38,15 @@ export default function SingleProject() {
     setQuoteStyle(_.target.value);
   };
 
+  const deleteCurrentProject = (): void => {
+    const updatedProjectData = projectData.filter((obj: ProjectData) => id !== obj.id);
+    setProjectData(updatedProjectData);
+    history.push("/Projects");
+  };
+
   const persistQuoteStyle = (): void => {
     setSingleProjectData({ ...singleProjectData, quoteStyle });
-    const updatedProjectData = projectData.map((obj: any) => {
+    const updatedProjectData = projectData.map((obj: ProjectData) => {
       if (id === obj.id) {
         return {
           ...obj,
@@ -90,7 +97,7 @@ export default function SingleProject() {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setDeletePopup(false)}>Cancel</Button>
-          <Button onClick={() => setDeletePopup(false)}>Delete</Button>
+          <Button onClick={() => deleteCurrentProject()}>Delete</Button>
         </DialogActions>
       </Dialog>
       <div className="qm-card-wrapper">
