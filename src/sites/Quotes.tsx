@@ -8,6 +8,14 @@ function Quotes() {
   const [showDialog, setShowDialog] = React.useState(false);
   const [projectFormData, setProjectFormData] = React.useState({ title: "", description: "" });
   const { setProjectData } = React.useContext(SavedProjects);
+  const [isError, setIsError] = React.useState<boolean>(false);
+
+  // remove error state if user types
+  React.useEffect(() => {
+    if (projectFormData.title && isError) {
+      setIsError(false);
+    }
+  }, [projectFormData.title, isError]);
 
   const toggleDialog = (): void => {
     setShowDialog((prevDialogState) => !prevDialogState);
@@ -25,6 +33,10 @@ function Quotes() {
   };
 
   const updateProjectData = (): void => {
+    if (projectFormData.title === "") {
+      setIsError(true);
+      return;
+    }
     setProjectData((prevProjectData: null | Array<ProjectData>) => {
       const generateNewData = { id: uuidv4(), quoteStyle: null, ...projectFormData };
       return [...(prevProjectData ? prevProjectData : []), generateNewData];
@@ -49,6 +61,8 @@ function Quotes() {
             sx={{ marginBlockStart: "24px", width: "100%" }}
             id="demo-helper-text-misaligned-no-helper"
             label="Project Name"
+            error={isError}
+            helperText={isError && "Can not be empty"}
           />
           <TextField
             value={projectFormData.description}

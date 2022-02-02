@@ -1,24 +1,10 @@
 import QuoteForm from "../components/QuoteForm/QuoteForm";
-import {
-  Button,
-  Card,
-  CardContent,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, DialogContentText, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Typography } from "@mui/material";
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { SavedProjects, ProjectData } from "../App";
 import SpeedDial from "../components/SpeedDial/SpeedDial";
+import GenericDialog from "../components/GenericDialog/GenericDialog";
 
 export default function SingleProject() {
   const [quoteStyle, setQuoteStyle] = React.useState<string | { quoteStyle: string }>("apa");
@@ -73,33 +59,35 @@ export default function SingleProject() {
   return (
     <div className="qm-single-project">
       <SpeedDial setDeletePopup={setDeletePopup} />
-      <Dialog keepMounted aria-describedby="alert-dialog-slide-description" open={welcomePopup}>
-        <DialogTitle>Welcome to your new Project: {singleProjectData && singleProjectData?.title}</DialogTitle>
-        <DialogContent>
+      <GenericDialog
+        dialogTitle={`Welcome to your new Project: ${singleProjectData && singleProjectData?.title}`}
+        isOpen={welcomePopup}
+        dialogActionBtnText="Start"
+        dialogActionMethod={persistQuoteStyle}
+        isAbortable={false}
+        dialogCloseMethod={() => setWelcomePopup(false)}
+      >
+        <>
           <DialogContentText>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, amet! Unde eaque repudiandae vero ex repellendus dolorem minus voluptatem.</DialogContentText>
           <FormControl sx={{ marginBlockStart: "16px" }} component="fieldset">
             <FormLabel component="legend">Select your quote style:</FormLabel>
             <RadioGroup onChange={switchQuoteStyle} row aria-label="quote style" name="row-radio-buttons-group">
-              <FormControlLabel value="apa" control={<Radio />} label="APA" />
+              <FormControlLabel checked value="apa" control={<Radio />} label="APA" />
               <FormControlLabel disabled value="harvard" control={<Radio />} label="Harvard" />
               <FormControlLabel disabled value="mla" control={<Radio />} label="MLA" />
             </RadioGroup>
           </FormControl>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={persistQuoteStyle}>Start</Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog keepMounted aria-describedby="alert-dialog-slide-description" open={deletePopup}>
-        <DialogTitle>Do you want to delete {singleProjectData && singleProjectData?.title}?</DialogTitle>
-        <DialogContent>
-          <DialogContentText>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setDeletePopup(false)}>Cancel</Button>
-          <Button onClick={() => deleteCurrentProject()}>Delete</Button>
-        </DialogActions>
-      </Dialog>
+        </>
+      </GenericDialog>
+      <GenericDialog
+        dialogTitle={`Do you want to delete ${singleProjectData && singleProjectData?.title}?`}
+        isOpen={deletePopup}
+        dialogActionBtnText="Delete"
+        dialogActionMethod={deleteCurrentProject}
+        dialogCloseMethod={() => setDeletePopup(false)}
+      >
+        <DialogContentText>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</DialogContentText>
+      </GenericDialog>
       <div className="qm-card-wrapper">
         <QuoteForm />
         <Card className="qm-card">
