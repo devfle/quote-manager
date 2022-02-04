@@ -10,12 +10,7 @@ jobs:
           node-version: '14'
       - run: npm install
       - run: npm run build
-  create-artifact:
-    needs: build-project
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/upload-artifact@v2
         with:
           name: quote-manager-build
           path: build/
-      
