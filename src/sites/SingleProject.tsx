@@ -31,7 +31,7 @@ const SingleProject = () => {
   let projectSettings = React.useContext(SavedProjects);
 
   if (!projectSettings?.setProjectData) {
-    throw new Error("");
+    throw new Error("project data not found");
   }
 
   if (!projectSettings?.projectData) {

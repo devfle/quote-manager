@@ -30,7 +30,7 @@ function Quotes() {
   const projectSettings = React.useContext(SavedProjects);
 
   if (!projectSettings?.setProjectData) {
-    throw new Error("xy");
+    throw new Error("project data not found");
   }
 
   const { setProjectData } = projectSettings;
