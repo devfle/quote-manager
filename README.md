@@ -2,6 +2,8 @@
 
 [![Build and Test Quote Manager](https://github.com/devfle/quote-manager/actions/workflows/build-and-test.yml/badge.svg?branch=master&event=push)](https://github.com/devfle/quote-manager/actions/workflows/build-and-test.yml)
 
+<img width="1644" alt="01" src="https://user-images.githubusercontent.com/52854338/176167416-c738c060-b3c1-4bca-87d9-bb862dacfe8c.png">
+
 With QuoteManager you have the ability to save and organize your sources for your term papers. All data is stored locally in the browser. I built the application so that I no longer have to manually insert every source into my term paper. This tool not only formats the sources correctly, but also puts them in the correct alphabetical order. This project was also a good opportunity to work with Typescript for the first time.
 
 ## For Developing
