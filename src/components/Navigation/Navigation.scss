@@ -16,10 +16,6 @@
     transform: translateX(0);
   }
 
-  &__avatar {
-    margin: 0 auto;
-  }
-
   &__list {
     list-style: none;
     margin-block-start: 32px;
@@ -40,7 +36,14 @@
     }
 
     .active {
-      background: #23252a;
+      background: #1e2024;
     }
+
+  }
+
+  &--is-small {
+    width: 70px;
+    transform: translateX(0);
+    position: fixed;
   }
 }

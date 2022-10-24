@@ -69,6 +69,7 @@ const App = () => {
     { title: "Dashboard", icon: DashboardIcon, link: "" },
     { title: "Projects", icon: ArticleIcon, link: "Projects" },
   ]);
+  const [showNavigationTitle] = React.useState(false);
 
   const project = { projectData, setProjectData };
 
@@ -91,8 +92,8 @@ const App = () => {
       <Snack.Provider value={setShowSnackbar}>
         <ThemeProvider theme={darkTheme}>
           <BrowserRouter>
-            <div className="quote-manager">
-              <Navigation navigationItems={navigationPointList} />
+            <div className={`${!showNavigationTitle ? 'quote-manager--is-fullscreen' : ''} quote-manager`}>
+              <Navigation showTitle={showNavigationTitle} navigationItems={navigationPointList} />
               <Typography variant="h4" className="quote-manager-title"></Typography>
               <Routes>
                 <Route path="/Projects" element={<Quotes />} />

@@ -6,14 +6,15 @@ import React from "react";
 import "./Navigation.scss";
 
 /* Material UI */
-import { IconButton, Typography, useMediaQuery, Avatar } from "@mui/material";
+import { IconButton, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 interface NavigationProps {
   navigationItems: { title: string; icon: React.FC<any>; link: string }[];
+  showTitle: boolean;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ navigationItems }) => {
+const Navigation: React.FC<NavigationProps> = ({ navigationItems, showTitle }) => {
   const [showNavigation, setShowNavigation] = React.useState(true);
   const isTablet = useMediaQuery("(min-width: 1024px)");
 
@@ -27,26 +28,20 @@ const Navigation: React.FC<NavigationProps> = ({ navigationItems }) => {
     <li key={_.title} className="qm-navigation__list-item">
       <NavLink style={{ display: "flex", alignItems: "center" }} className="qm-navigation__link" to={`/${_.link}`}>
         <_.icon sx={{ mr: 1 }} />
-        {_.title}
+        {showTitle ? _.title : ''}
       </NavLink>
     </li>
   ));
 
   return (
     <>
-      {!isTablet ? (
+      {!isTablet && showTitle ? (
         <IconButton className="qm-burger-button" sx={{ zIndex: 20, alignSelf: "flex-start" }} onClick={() => setShowNavigation((prevNavState) => !prevNavState)} aria-label="toggle navigation">
           <MenuIcon />
         </IconButton>
       ) : null}
-      <nav className={`${showNavigation ? "qm-navigation--is-visible" : ""} qm-navigation`}>
-        <Avatar alt="User Avatar" sx={{ width: 90, height: 90 }} className="qm-navigation__avatar">
-          User
-        </Avatar>
+      <nav className={`${showNavigation ? "qm-navigation--is-visible" : ""} ${!showTitle ? 'qm-navigation--is-small' : ''} qm-navigation`}>
         <ul className="qm-navigation__list">{navigation}</ul>
-        <Typography sx={{ position: "absolute", bottom: 24, px: 3 }} variant="body2" className="qm-navigation__version">
-          Version 1.0.0
-        </Typography>
       </nav>
     </>
   );
