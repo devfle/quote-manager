@@ -30,6 +30,7 @@ export interface FormData {
 const QuoteForm: React.FC<QuoteFormProps> = ({ persistFormData }) => {
   const [quoteResource, setQuoteResource] = React.useState<string>("book");
   const [formData, setFormData] = React.useState<FormData | null>(null);
+  const [todayDate] = React.useState(new Date().toLocaleDateString());
   const quoteForms: Set<string> = new Set(["book", "internet resource", "academic journal"]);
 
   /* prepare select items */
@@ -60,6 +61,11 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ persistFormData }) => {
   const handleFormSubmit = (): void => {
     if (!formData) {
       return;
+    }
+
+    // handle default date
+    if(!formData?.access) {
+      formData.access = todayDate;
     }
 
     persistFormData(formData);
@@ -199,7 +205,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ persistFormData }) => {
                 sx={{ width: "50%" }}
                 className="qm-card__input"
                 id="outlined-basic"
-                value={formData?.access ?? ""}
+                value={formData?.access ?? todayDate}
                 name="access"
                 label="Last Access"
                 variant="outlined"

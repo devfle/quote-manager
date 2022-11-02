@@ -14,7 +14,7 @@ const Quote: React.FC<QuoteProps> = ({ source, formData }) => {
       return <span>{`${quoteFirstPart} ${edition ? edition + ". Auflage," : ""} ${publisher ? publisher + "," : ""} ${city ? city + "." : "o.V."}`}</span>;
 
     case "internet resource":
-      return <span>{`${quoteFirstPart} (URL: ${url ?? ""} [letzter Zugriff: ${access ?? "27.07.2022"}]).`}</span>;
+      return <span>{`${quoteFirstPart} (URL: ${url ?? ""} [letzter Zugriff: ${access ?? ''}]).`}</span>;
 
     default:
       return <span>{`${quoteFirstPart} ${journalname ? `In: ${journalname},` : ""} ${volumne ? volumne + ". Jg.," : ""} ${issue ? `Heft ${issue},` : ""} ${page ? "S. " + page : ""}.`}</span>;
