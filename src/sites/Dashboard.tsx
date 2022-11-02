@@ -24,7 +24,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="qm-dashboard">
-      <Card sx={{ mb: 2, width: 400 }}>
+      <Card sx={{ width: 400 }}>
         <CardContent>
           <Typography variant="h5">Welcome to the QuoteManager</Typography>
           <Typography sx={{ mt: 2 }}>With QuoteManager you have the ability to save and organize your sources for your term papers.</Typography>
@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
           </Typography>
         </CardContent>
       </Card>
-      <Card sx={{ mt: 2, width: 400 }}>
+      <Card sx={{ width: 400 }}>
         <CardContent>
           <Typography sx={{ mb: 2 }} variant="h5">
             Statistics:

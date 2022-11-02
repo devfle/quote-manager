@@ -21,7 +21,7 @@ const ProjectCard: React.FC = () => {
   const cardData = projectSettings?.projectData.map((_: { id: string | number; title: string; description?: string }) => {
     return (
       <Link key={_.id} className="qm-project-card" to={`/Quote/${_.id}`}>
-        <Card sx={{ transition: "all .2s linear", cursor: "pointer", width: 280 }}>
+        <Card sx={{ transition: "all .2s linear", cursor: "pointer", width: 310, minHeight: 120 }}>
           <CardContent>
             <Typography variant="h5" className="qm-project-card__headline">
               {_.title}

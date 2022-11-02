@@ -34,6 +34,7 @@ body {
   margin-block-start: 24px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  align-items: flex-start;
 
   .qm-card > div {
     display: flex;
@@ -56,4 +57,12 @@ body {
 
 .qm-card__quote-list > li:hover > .qm-card__delete-icon {
   visibility: visible;
+}
+
+.qm-dashboard {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-block-start: 32px;
 }

@@ -158,7 +158,7 @@ const SingleProject = () => {
 
   return (
     <div className="qm-single-project">
-      <SpeedDial onClick={() => setDeletePopup(true)} sx={{ position: "absolute", bottom: 32, right: 32 }} icon={<DeleteForeverIcon />} ariaLabel="delete this project"></SpeedDial>
+      <SpeedDial onClick={() => setDeletePopup(true)} sx={{ position: "fixed", bottom: 32, right: 32 }} icon={<DeleteForeverIcon />} ariaLabel="delete this project"></SpeedDial>
       <GenericDialog
         dialogTitle={`Welcome to your new Project: ${singleProjectData && singleProjectData?.title}`}
         isOpen={welcomePopup}
