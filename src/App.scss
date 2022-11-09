@@ -15,19 +15,17 @@ body {
   padding: 16px;
   box-sizing: border-box;
   color: #fff;
-  
+
   @media screen and (min-width: 1024px) {
     width: calc(100% - 280px);
     padding: 16px 32px;
     margin-inline-start: auto;
   }
-  
+
   &--is-fullscreen {
     width: calc(100% - 70px);
     margin-inline-start: 70px;
   }
-  
-
 }
 
 .qm-card-wrapper {
@@ -55,8 +53,12 @@ body {
   }
 }
 
-.qm-card__quote-list > li:hover > .qm-card__delete-icon {
-  visibility: visible;
+.qm-card__quote-list > li:hover {
+  background: rgb(24, 24, 24);
+  border-radius: 4px;
+  > .qm-card__delete-icon {
+    visibility: visible;
+  }
 }
 
 .qm-dashboard {
