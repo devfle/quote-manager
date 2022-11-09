@@ -197,7 +197,7 @@ const SingleProject = () => {
           <CardContent sx={{ p: 0 }}>
             <ul style={{ lineHeight: 1.4, listStyle: "none" }} className="qm-card__quote-list">
               {sortedProjectData?.map((_: FormData, index: number) => (
-                <li style={{ marginBlockEnd: 8, display: "flex", alignItems: "center", justifyContent: "space-between" }} key={uuid()}>
+                <li style={{ marginBlockEnd: 8, padding: 6, display: "flex", alignItems: "center", justifyContent: "space-between" }} key={uuid()}>
                   <Quote source={_.source} formData={_} />
                   <IconButton onClick={() => deleteQuote(index)} className="qm-card__delete-icon" sx={{ ml: 1, visibility: "hidden" }} aria-label="delete quote">
                     <DeleteForeverIcon />
