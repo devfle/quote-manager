@@ -1,6 +1,4 @@
-# Welcome to QuoteManager
-
-[![Build and Test Quote Manager](https://github.com/devfle/quote-manager/actions/workflows/build-and-test.yml/badge.svg?branch=master&event=push)](https://github.com/devfle/quote-manager/actions/workflows/build-and-test.yml)
+# APA QuoteManager
 
 <img width="1644" alt="01" src="https://user-images.githubusercontent.com/52854338/176167416-c738c060-b3c1-4bca-87d9-bb862dacfe8c.png">
 
